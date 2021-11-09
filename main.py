@@ -1,4 +1,5 @@
-from Observable import Observer, Observable
+from Observable import Observable
+from Observer import Observer
 
 
 class MySubject(Observable):

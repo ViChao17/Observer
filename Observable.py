@@ -1,18 +1,20 @@
-class ObserverInterface:
-    def update(self, obs, arg):
-        pass
+from __future__ import annotations
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from Observer import Observer
 
 
 class Observable:
 
     def __init__(self):
-        self.observers: list[ObserverInterface] = []
+        self.observers: list[Observer] = []
         self.changed: bool = False
 
-    def register(self, o: ObserverInterface):
+    def register(self, o: Observer):
         self.observers.append(o)
 
-    def remove(self, o: ObserverInterface):
+    def remove(self, o: Observer):
         self.observers.remove(o)
 
     def notify(self, arg=None):
@@ -23,8 +25,3 @@ class Observable:
 
     def set_changed(self):
         self.changed = True
-
-
-class Observer(ObserverInterface):
-    def update(self, obs: Observable, arg):
-        pass
